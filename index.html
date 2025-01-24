@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Ensure the body has a dark background from the start */
+    body {
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .image-container img {
+      width: 200px;
+      mix-blend-mode: screen;
+      filter: contrast(150%) saturate(150%);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: flicker 2s linear infinite;
+    }
+    
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <div id="preloader">
+    <div class="image-container">
+      <img src="logo.png" alt="Preloader Image">
+    </div>
+  </div>
+  <div class="main w-full arcade-font">
+    <nav class="absolute flex w-full top-0 left-0 px-10 py-3 flex justify-between items-center z-30">
+      <img class="w-[160px] mix-blend-screen filter contrast-150 saturate-150" src="logo.png" alt="">
+      <div class="flex gap-5 items-center">
+      <a href="#" class="tracking-tight text-white hover:text-fuchsia-400 hover:text-shadow-[0_0_15px_rgba(232,121,249,0.8)] hover:shadow-fuchsia-400 transition-all duration-300">Games</a>
+      <a href="#" class="tracking-tight text-white hover:text-fuchsia-400 hover:text-shadow-[0_0_15px_rgba(232,121,249,0.8)] hover:shadow-fuchsia-400 transition-all duration-300">News</a>
+      <a href="#" class="tracking-tight text-white hover:text-fuchsia-400 hover:text-shadow-[0_0_15px_rgba(232,121,249,0.8)] hover:shadow-fuchsia-400 transition-all duration-300">Community</a>
+      <a href="#" class="tracking-tight text-white hover:text-fuchsia-400 hover:text-shadow-[0_0_15px_rgba(232,121,249,0.8)] hover:shadow-fuchsia-400 transition-all duration-300">Support</a>
+      <a href="#" class="tracking-tight px-4 py-2 text-white rounded-md hover:bg-fuchsia-900 hover:text-fuchsia-400 hover:text-shadow-[0_0_15px_rgba(232,121,249,0.8)] hover:shadow-fuchsia-400 transition-all duration-300">Sign In</a>
+      </div>
+    </nav>
+    <div id="page1" class="page relative w-full h-[100vh] overflow-hidden">
+      <canvas id="canvas" class="relative z-10 -translate-y-20 sm:left-1/2 sm:-translate-x-1/2 md:left-1/2 md:-translate-x-1/2 lg:left-1/2 lg:-translate-x-1/2"></canvas>
+      <img class="absolute z-20 w-[80%] mix-blend-screen filter contrast-150 saturate-150 -translate-x-[-5%] -translate-y-[90%] sm:left-1/2 sm:-translate-x-1/2 md:left-1/2 md:-translate-x-1/2 lg:left-1/2 lg:-translate-x-1/2" src="logo.png" alt="">
+      <div 
+      class="w-[31rem] h-[31rem] absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-400 blur-[80px] blur-2xl"></div>
+    </div>
+  </div>
+  
+  <script type="module" src="main.js"></script>
+</body>
+</html>

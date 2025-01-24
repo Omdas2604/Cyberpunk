@@ -1,0 +1,216 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body{
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+ 
+}
+@font-face {
+  font-family: 'ARCADECLASSIC';
+  src: url('ARCADECLASSIC.TTF') format('truetype'); /* Adjusted for direct path */
+  font-weight: normal;
+  font-style: normal;
+}
+.arcade-font {
+  font-family: 'ARCADECLASSIC', sans-serif; /* Fallback to sans-serif */
+}
+
+body::before{
+  content: '';
+  position: fixed;
+  top: 0;
+  /* left: 0; */
+  width: 100%;
+  height: 100%;
+  background-image: url(./assets/bg-image.jpg);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  transition: all 0.3s ease;
+  opacity: 1;
+  z-index: -1;
+}
+
+.container{
+  display: grid;
+  place-items:center;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
+}
+
+.card_container{
+  display: grid;
+  row-gap: 3.5rem;
+}
+
+.card_article{
+position: relative;
+overflow: hidden;
+}
+
+.card_img{
+  width: 328px;
+  border-radius: 1.5rem;
+}
+
+.card_data{
+  width: 280px;
+  background-color: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0,0%,0%,.15);
+  border-radius: 1.5rem;
+  position: absolute;
+  bottom: -15rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 1;
+  transition: opacity 1s 1s;
+}
+
+.card_description{
+  display: block;
+  font-size: 1.25rem;
+  margin-bottom: .25rem;
+}
+
+.card_title{
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: black;
+  margin-bottom: .75rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.card_button{
+  text-decoration: none;
+  font-size: .813rem;
+  font-weight: 500;
+  color: white;
+}
+
+.card_button:hover{
+text-decoration: underline;
+}
+
+.card_article:hover .card_data{
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card_article:hover{
+  animation:remove-overflow 2s forwards;
+}
+
+@keyframes show-data {
+  50%{
+    transform: translateY(-13rem);
+  }
+  100%{
+    transform: translateY(-10rem);
+  }
+}
+
+.card_article:not(:hover){
+  animation: show-overflow 2s forwards;
+}
+.card_article:not(:hover) .card_data{
+  animation: remove-data 1s forwards;
+}
+
+@keyframes remove-overflow{
+  to{
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data{
+  0%{
+    transform: translateY(-10rem);
+  }
+
+  50%{
+    transform: translateY(-13rem);
+  }
+  100%{
+    transform: translateY(.5rem);
+  }
+  
+}
+@keyframes show-overflow {
+
+  0%{
+    overflow: initial;
+    pointer-events: none;
+  }
+  50%{
+    overflow: hidden;
+  }
+}
+.neon-shadow {
+    animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 2px rgba(233, 94, 160, 0.8),    /* Darker pink glow */
+      0 0 4px rgba(233, 94, 160, 0.7),
+      0 0 8px rgba(63, 81, 181, 0.4),     /* Light blue undertone */
+      0 0 16px rgba(63, 81, 181, 0.3),    /* Light blue undertone */
+      0 0 32px rgba(233, 94, 160, 0.6),    /* Pink fading out */
+      0 0 48px rgba(233, 94, 160, 0.4),
+      0 0 64px rgba(0, 0, 0, 0.2);         /* Black undertone fading out */
+  }
+  50% {
+    text-shadow: 
+      0 0 4px rgba(233, 94, 160, 1),      /* Brighter pink glow */
+      0 0 8px rgba(233, 94, 160, 0.9),
+      0 0 16px rgba(63, 81, 181, 0.6),    /* More blue undertone */
+      0 0 24px rgba(63, 81, 181, 0.5),
+      0 0 40px rgba(233, 94, 160, 0.8),
+      0 0 56px rgba(233, 94, 160, 0.7),
+      0 0 72px rgba(0, 0, 0, 0.3);        /* Black undertone intensifies */
+  }
+}
+
+/* Custom Tailwind class */
+.page {
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+#preloader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+.image-container img{
+  width: 250px;
+  animation: flicker 0.5s infinite;
+}
+
+@keyframes flicker{
+  0%, 50%, 100%{
+    opacity: 1;
+  }
+  25%, 75%{
+    opacity: 0.3;
+  }
+}
+#preloader {
+  transition: opacity 0.5s ease;
+}
